@@ -1,0 +1,55 @@
+kind: ObjectType
+version: v1
+definition:
+  name: financial_transfers
+  fields:
+    - name: transaction_id
+      type: String!
+      description: Unique identifier for the money transfer transaction used for tracking and investigation purposes.
+    - name: amount
+      type: numeric
+      description: Transfer amount in original currency. Values just below $10,000 often indicate structuring attempts.
+    - name: date
+      type: date
+      description: Transaction date for timeline analysis and regulatory reporting deadlines.
+    - name: time
+      type: String
+      description: Transaction timestamp for detecting rapid movement and coordination patterns.
+    - name: sender_account
+      type: String
+      description: Originating account identifier for mapping money flow networks and identifying source of funds.
+    - name: receiver_account
+      type: String
+      description: Destination account identifier for tracking beneficiaries and detecting layering schemes.
+    - name: sender_bank_location
+      type: String
+      description: Originating bank jurisdiction for sanctions screening and high-risk country monitoring.
+    - name: receiver_bank_location
+      type: String
+      description: Destination bank jurisdiction for cross-border compliance and terrorism financing detection.
+    - name: payment_currency
+      type: String
+      description: Transaction currency code (USD, EUR, etc). Currency mismatches may indicate layering.
+    - name: received_currency
+      type: String
+      description: Destination currency indicating potential currency conversion for layering detection.
+    - name: payment_type
+      type: String
+      description: |
+        Method of payment transfer. Possible values:
+        - 'CASH': Cash transaction requiring enhanced monitoring for large amounts
+        - 'CHECK': Physical or electronic check payment
+        - 'CRYPTO': Cryptocurrency transfer requiring special AML protocols
+        - 'WIRE': Bank wire transfer subject to CTR reporting requirements
+    - name: is_laundering
+      type: boolean
+      description: AML investigation flag indicating confirmed or suspected money laundering requiring immediate action.
+    - name: laundering_type
+      type: String
+      description: |
+        Laundering classification. Possible values:
+        - 'STRUCTURING': Breaking large amounts into smaller transactions
+        - 'ROUND_DOLLAR_STRUCTURING': Structuring using round dollar amounts (e.g., $9,000, $8,500) to avoid detection
+        - 'SMURFING': Using multiple accounts to launder money
+        - 'LAYERING': Complex transactions to obscure money trail
+        - 'TRADE_BASED': Trade-based money laundering schemes

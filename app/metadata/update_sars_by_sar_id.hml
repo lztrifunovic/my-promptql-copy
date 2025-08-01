@@ -1,0 +1,307 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_sars_customer_id
+  description: Update the 'customer_id' column in the 'sars' collection
+  fields:
+    - name: set
+      type: int_32
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_sars_customer_id
+    inputTypeName: update_column_sars_customer_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_sars_customer_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_sars_customer_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_sars_filed_date
+  description: Update the 'filed_date' column in the 'sars' collection
+  fields:
+    - name: set
+      type: timestamp
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_sars_filed_date
+    inputTypeName: update_column_sars_filed_date_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_sars_filed_date
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_sars_filed_date
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_sars_reason
+  description: Update the 'reason' column in the 'sars' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_sars_reason
+    inputTypeName: update_column_sars_reason_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_sars_reason
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_sars_reason
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_sars_sar_id
+  description: Update the 'sar_id' column in the 'sars' collection
+  fields:
+    - name: set
+      type: int_32!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_sars_sar_id
+    inputTypeName: update_column_sars_sar_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_sars_sar_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_sars_sar_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_sars_status
+  description: Update the 'status' column in the 'sars' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_sars_status
+    inputTypeName: update_column_sars_status_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_sars_status
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_sars_status
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_sars_transaction_id
+  description: Update the 'transaction_id' column in the 'sars' collection
+  fields:
+    - name: set
+      type: int_32
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_sars_transaction_id
+    inputTypeName: update_column_sars_transaction_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_sars_transaction_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_sars_transaction_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_sars_by_sar_id_update_columns
+  description: Update the columns of the 'sars' collection
+  fields:
+    - name: customer_id
+      type: update_column_sars_customer_id
+      description: Update the 'customer_id' column in the 'sars' collection.
+    - name: filed_date
+      type: update_column_sars_filed_date
+      description: Update the 'filed_date' column in the 'sars' collection.
+    - name: reason
+      type: update_column_sars_reason
+      description: Update the 'reason' column in the 'sars' collection.
+    - name: sar_id
+      type: update_column_sars_sar_id
+      description: Update the 'sar_id' column in the 'sars' collection.
+    - name: status
+      type: update_column_sars_status
+      description: Update the 'status' column in the 'sars' collection.
+    - name: transaction_id
+      type: update_column_sars_transaction_id
+      description: Update the 'transaction_id' column in the 'sars' collection.
+  graphql:
+    typeName: update_sars_by_sar_id_update_columns
+    inputTypeName: update_sars_by_sar_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_sars_by_sar_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_sars_by_sar_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customer_id
+          - filed_date
+          - reason
+          - sar_id
+          - status
+          - transaction_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_sars_by_sar_id_response
+  description: Responses from the 'update_sars_by_sar_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[sars!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: update_sars_by_sar_id_response
+    inputTypeName: update_sars_by_sar_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_sars_by_sar_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_sars_by_sar_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_sars_by_sar_id
+  outputType: update_sars_by_sar_id_response!
+  arguments:
+    - name: key_sar_id
+      type: int_32!
+    - name: post_check
+      type: sars_bool_exp
+      description: Update permission post-condition predicate over the 'sars' collection
+    - name: pre_check
+      type: sars_bool_exp
+      description: Update permission pre-condition predicate over the 'sars' collection
+    - name: update_columns
+      type: update_sars_by_sar_id_update_columns!
+  source:
+    dataConnectorName: my_postgres
+    dataConnectorCommand:
+      procedure: update_sars_by_sar_id
+  graphql:
+    rootFieldName: update_sars_by_sar_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'sars' collection using the 'sar_id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_sars_by_sar_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

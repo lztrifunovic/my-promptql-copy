@@ -1,0 +1,124 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_financial_transfers_object
+  fields:
+    - name: amount
+      type: bigdecimal
+    - name: date
+      type: date
+    - name: is_laundering
+      type: boolean
+    - name: laundering_type
+      type: string
+    - name: payment_currency
+      type: string
+    - name: payment_type
+      type: string
+    - name: received_currency
+      type: string
+    - name: receiver_account
+      type: int_32
+    - name: receiver_bank_location
+      type: string
+    - name: sender_account
+      type: int_32
+    - name: sender_bank_location
+      type: string
+    - name: time
+      type: string
+    - name: transaction_id
+      type: int_32!
+  graphql:
+    typeName: insert_financial_transfers_object
+    inputTypeName: insert_financial_transfers_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: insert_financial_transfers_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_financial_transfers_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - date
+          - is_laundering
+          - laundering_type
+          - payment_currency
+          - payment_type
+          - received_currency
+          - receiver_account
+          - receiver_bank_location
+          - sender_account
+          - sender_bank_location
+          - time
+          - transaction_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_financial_transfers_response
+  description: Responses from the 'insert_financial_transfers' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[financial_transfers!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: insert_financial_transfers_response
+    inputTypeName: insert_financial_transfers_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: insert_financial_transfers_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_financial_transfers_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_financial_transfers
+  outputType: insert_financial_transfers_response!
+  arguments:
+    - name: objects
+      type: "[insert_financial_transfers_object!]!"
+    - name: post_check
+      type: financial_transfers_bool_exp
+      description: Insert permission predicate over the 'financial_transfers' collection
+  source:
+    dataConnectorName: my_postgres
+    dataConnectorCommand:
+      procedure: insert_financial_transfers
+  graphql:
+    rootFieldName: insert_financial_transfers
+    rootFieldKind: Mutation
+  description: Insert into the financial_transfers table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_financial_transfers
+  permissions:
+    - role: admin
+      allowExecution: true
+

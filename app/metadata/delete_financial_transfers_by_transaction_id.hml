@@ -1,0 +1,63 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_financial_transfers_by_transaction_id_response
+  description: Responses from the 'delete_financial_transfers_by_transaction_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[financial_transfers!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: delete_financial_transfers_by_transaction_id_response
+    inputTypeName: delete_financial_transfers_by_transaction_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: delete_financial_transfers_by_transaction_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_financial_transfers_by_transaction_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_financial_transfers_by_transaction_id
+  outputType: delete_financial_transfers_by_transaction_id_response!
+  arguments:
+    - name: key_transaction_id
+      type: int_32!
+    - name: pre_check
+      type: financial_transfers_bool_exp
+      description: Delete permission predicate over the 'financial_transfers' collection
+  source:
+    dataConnectorName: my_postgres
+    dataConnectorCommand:
+      procedure: delete_financial_transfers_by_transaction_id
+  graphql:
+    rootFieldName: delete_financial_transfers_by_transaction_id
+    rootFieldKind: Mutation
+  description: Delete any row on the 'financial_transfers' collection using the
+    'transaction_id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_financial_transfers_by_transaction_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

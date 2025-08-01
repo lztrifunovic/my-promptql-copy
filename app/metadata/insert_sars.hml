@@ -1,0 +1,103 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_sars_object
+  fields:
+    - name: customer_id
+      type: int_32
+    - name: filed_date
+      type: timestamp
+    - name: reason
+      type: string
+    - name: sar_id
+      type: int_32!
+    - name: status
+      type: string
+    - name: transaction_id
+      type: int_32
+  graphql:
+    typeName: insert_sars_object
+    inputTypeName: insert_sars_object_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: insert_sars_object
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_sars_object
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customer_id
+          - filed_date
+          - reason
+          - sar_id
+          - status
+          - transaction_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: insert_sars_response
+  description: Responses from the 'insert_sars' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[sars!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: insert_sars_response
+    inputTypeName: insert_sars_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: insert_sars_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: insert_sars_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: insert_sars
+  outputType: insert_sars_response!
+  arguments:
+    - name: objects
+      type: "[insert_sars_object!]!"
+    - name: post_check
+      type: sars_bool_exp
+      description: Insert permission predicate over the 'sars' collection
+  source:
+    dataConnectorName: my_postgres
+    dataConnectorCommand:
+      procedure: insert_sars
+  graphql:
+    rootFieldName: insert_sars
+    rootFieldKind: Mutation
+  description: Insert into the sars table
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: insert_sars
+  permissions:
+    - role: admin
+      allowExecution: true
+

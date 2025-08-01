@@ -1,0 +1,233 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: sars
+  description: |
+    Suspicious Activity Reports (SARs) filed by the bank to regulatory authorities.
+    Critical for AML compliance and investigation tracking. Contains detailed information
+    about suspicious transactions that require regulatory reporting under FCA guidelines.
+  fields:
+    - name: sar_id
+      type: int_32!
+      description: |
+        Primary key - Unique identifier for each SAR filing.
+        Required field that serves as the main reference for all SAR-related operations.
+    - name: customer_id
+      type: int_32
+      description: |
+        Links to the customer who initiated or is associated with the suspicious transaction.
+        May be null for third-party or anonymous suspicious activities.
+        Critical for customer risk profiling and PEP analysis.
+    - name: transaction_id
+      type: int_32
+      description: |
+        References the specific financial transfer that triggered this SAR.
+        Essential for calculating processing times and investigating transaction patterns.
+        Links to financial_transfers table for complete transaction details.
+    - name: filed_date
+      type: timestamp
+      description: |
+        Exact date and time when the SAR was filed with regulatory authorities.
+        Critical for compliance timing analysis - SARs must be filed within 30 days.
+        Used to calculate processing delays and measure investigation efficiency.
+        Format includes both date and time components for precise timing analysis.
+    - name: status
+      type: string
+      description: |
+        Current state of the SAR in the regulatory process.
+        Common values: 'filed', 'pending', 'under_review', 'closed', 'rejected'
+        Essential for tracking SAR outcomes and measuring filing success rates.
+        Helps identify bottlenecks in the AML investigation workflow.
+    - name: reason
+      type: string
+      description: |
+        Detailed narrative explaining why this activity was deemed suspicious.
+        Contains the regulatory justification and analyst observations.
+        Critical for improving SAR quality and reducing false positives.
+        May include references to specific suspicious patterns, amounts, or behaviors.
+        Used for training ML models and improving future detection accuracy.
+  graphql:
+    typeName: sars
+    inputTypeName: sars_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: sars
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: sars
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - customer_id
+          - filed_date
+          - reason
+          - sar_id
+          - status
+          - transaction_id
+
+---
+kind: BooleanExpressionType
+version: v1
+definition:
+  name: sars_bool_exp
+  operand:
+    object:
+      type: sars
+      comparableFields:
+        - fieldName: customer_id
+          booleanExpressionType: int_4_bool_exp
+        - fieldName: filed_date
+          booleanExpressionType: timestamp_bool_exp
+        - fieldName: reason
+          booleanExpressionType: text_bool_exp
+        - fieldName: sar_id
+          booleanExpressionType: int_4_bool_exp
+        - fieldName: status
+          booleanExpressionType: varchar_bool_exp
+        - fieldName: transaction_id
+          booleanExpressionType: int_4_bool_exp
+      comparableRelationships:
+        - relationshipName: customer
+        - relationshipName: financial_transfer
+  logicalOperators:
+    enable: true
+  isNull:
+    enable: true
+  graphql:
+    typeName: sars_bool_exp
+
+---
+kind: AggregateExpression
+version: v1
+definition:
+  name: sars_agg_exp
+  operand:
+    object:
+      aggregatedType: sars
+      aggregatableFields:
+        - fieldName: customer_id
+          aggregateExpression: int_4_agg_exp
+        - fieldName: filed_date
+          aggregateExpression: timestamp_agg_exp
+        - fieldName: reason
+          aggregateExpression: text_agg_exp
+        - fieldName: sar_id
+          aggregateExpression: int_4_agg_exp
+        - fieldName: status
+          aggregateExpression: varchar_agg_exp
+        - fieldName: transaction_id
+          aggregateExpression: int_4_agg_exp
+  count:
+    enable: true
+    returnType: int_64
+  graphql:
+    selectTypeName: sars_agg_exp
+
+---
+kind: OrderByExpression
+version: v1
+definition:
+  name: sars_order_by_exp
+  operand:
+    object:
+      orderedType: sars
+      orderableFields:
+        - fieldName: customer_id
+          orderByExpression: int_32_order_by_exp
+        - fieldName: filed_date
+          orderByExpression: timestamp_order_by_exp
+        - fieldName: reason
+          orderByExpression: string_order_by_exp
+        - fieldName: sar_id
+          orderByExpression: int_32_order_by_exp
+        - fieldName: status
+          orderByExpression: string_order_by_exp
+        - fieldName: transaction_id
+          orderByExpression: int_32_order_by_exp
+      orderableRelationships:
+        - relationshipName: customer
+        - relationshipName: financial_transfer
+  graphql:
+    expressionTypeName: sars_order_by_exp
+
+---
+kind: Model
+version: v2
+definition:
+  name: sars
+  objectType: sars
+  source:
+    dataConnectorName: my_postgres
+    collection: sars
+  filterExpressionType: sars_bool_exp
+  aggregateExpression: sars_agg_exp
+  orderByExpression: sars_order_by_exp
+  graphql:
+    selectMany:
+      queryRootField: sars
+      subscription:
+        rootField: sars
+    selectUniques:
+      - queryRootField: sars_by_sar_id
+        uniqueIdentifier:
+          - sar_id
+        subscription:
+          rootField: sars_by_sar_id
+    filterInputTypeName: sars_filter_input
+    aggregate:
+      queryRootField: sars_aggregate
+      subscription:
+        rootField: sars_aggregate
+
+---
+kind: ModelPermissions
+version: v1
+definition:
+  modelName: sars
+  permissions:
+    - role: admin
+      select:
+        filter: null
+        allowSubscriptions: true
+
+---
+kind: Relationship
+version: v1
+definition:
+  name: customer
+  sourceType: sars
+  target:
+    model:
+      name: customers
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: customer_id
+      target:
+        modelField:
+          - fieldName: customer_id
+
+---
+kind: Relationship
+version: v1
+definition:
+  name: financial_transfer
+  sourceType: sars
+  target:
+    model:
+      name: financial_transfers
+      relationshipType: Object
+  mapping:
+    - source:
+        fieldPath:
+          - fieldName: transaction_id
+      target:
+        modelField:
+          - fieldName: transaction_id
+

@@ -1,0 +1,62 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: delete_sars_by_sar_id_response
+  description: Responses from the 'delete_sars_by_sar_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[sars!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: delete_sars_by_sar_id_response
+    inputTypeName: delete_sars_by_sar_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: delete_sars_by_sar_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: delete_sars_by_sar_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: delete_sars_by_sar_id
+  outputType: delete_sars_by_sar_id_response!
+  arguments:
+    - name: key_sar_id
+      type: int_32!
+    - name: pre_check
+      type: sars_bool_exp
+      description: Delete permission predicate over the 'sars' collection
+  source:
+    dataConnectorName: my_postgres
+    dataConnectorCommand:
+      procedure: delete_sars_by_sar_id
+  graphql:
+    rootFieldName: delete_sars_by_sar_id
+    rootFieldKind: Mutation
+  description: Delete any row on the 'sars' collection using the 'sar_id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: delete_sars_by_sar_id
+  permissions:
+    - role: admin
+      allowExecution: true
+

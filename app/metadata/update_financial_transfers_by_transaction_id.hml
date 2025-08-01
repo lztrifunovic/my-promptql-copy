@@ -1,0 +1,573 @@
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_amount
+  description: Update the 'amount' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: bigdecimal
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_amount
+    inputTypeName: update_column_financial_transfers_amount_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_amount
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_amount
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_date
+  description: Update the 'date' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: date
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_date
+    inputTypeName: update_column_financial_transfers_date_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_date
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_date
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_is_laundering
+  description: Update the 'is_laundering' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: boolean
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_is_laundering
+    inputTypeName: update_column_financial_transfers_is_laundering_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_is_laundering
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_is_laundering
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_laundering_type
+  description: Update the 'laundering_type' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_laundering_type
+    inputTypeName: update_column_financial_transfers_laundering_type_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_laundering_type
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_laundering_type
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_payment_currency
+  description: Update the 'payment_currency' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_payment_currency
+    inputTypeName: update_column_financial_transfers_payment_currency_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_payment_currency
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_payment_currency
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_payment_type
+  description: Update the 'payment_type' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_payment_type
+    inputTypeName: update_column_financial_transfers_payment_type_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_payment_type
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_payment_type
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_received_currency
+  description: Update the 'received_currency' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_received_currency
+    inputTypeName: update_column_financial_transfers_received_currency_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_received_currency
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_received_currency
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_receiver_account
+  description: Update the 'receiver_account' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: int_32
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_receiver_account
+    inputTypeName: update_column_financial_transfers_receiver_account_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_receiver_account
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_receiver_account
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_receiver_bank_location
+  description: Update the 'receiver_bank_location' column in the
+    'financial_transfers' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_receiver_bank_location
+    inputTypeName: update_column_financial_transfers_receiver_bank_location_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_receiver_bank_location
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_receiver_bank_location
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_sender_account
+  description: Update the 'sender_account' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: int_32
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_sender_account
+    inputTypeName: update_column_financial_transfers_sender_account_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_sender_account
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_sender_account
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_sender_bank_location
+  description: Update the 'sender_bank_location' column in the
+    'financial_transfers' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_sender_bank_location
+    inputTypeName: update_column_financial_transfers_sender_bank_location_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_sender_bank_location
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_sender_bank_location
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_time
+  description: Update the 'time' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: string
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_time
+    inputTypeName: update_column_financial_transfers_time_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_time
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_time
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_column_financial_transfers_transaction_id
+  description: Update the 'transaction_id' column in the 'financial_transfers' collection
+  fields:
+    - name: set
+      type: int_32!
+      description: Set the column to this value
+  graphql:
+    typeName: update_column_financial_transfers_transaction_id
+    inputTypeName: update_column_financial_transfers_transaction_id_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_column_financial_transfers_transaction_id
+      fieldMapping:
+        set:
+          column:
+            name: _set
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_column_financial_transfers_transaction_id
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - set
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_financial_transfers_by_transaction_id_update_columns
+  description: Update the columns of the 'financial_transfers' collection
+  fields:
+    - name: amount
+      type: update_column_financial_transfers_amount
+      description: Update the 'amount' column in the 'financial_transfers' collection.
+    - name: date
+      type: update_column_financial_transfers_date
+      description: Update the 'date' column in the 'financial_transfers' collection.
+    - name: is_laundering
+      type: update_column_financial_transfers_is_laundering
+      description: Update the 'is_laundering' column in the 'financial_transfers'
+        collection.
+    - name: laundering_type
+      type: update_column_financial_transfers_laundering_type
+      description: Update the 'laundering_type' column in the 'financial_transfers'
+        collection.
+    - name: payment_currency
+      type: update_column_financial_transfers_payment_currency
+      description: Update the 'payment_currency' column in the 'financial_transfers'
+        collection.
+    - name: payment_type
+      type: update_column_financial_transfers_payment_type
+      description: Update the 'payment_type' column in the 'financial_transfers' collection.
+    - name: received_currency
+      type: update_column_financial_transfers_received_currency
+      description: Update the 'received_currency' column in the 'financial_transfers'
+        collection.
+    - name: receiver_account
+      type: update_column_financial_transfers_receiver_account
+      description: Update the 'receiver_account' column in the 'financial_transfers'
+        collection.
+    - name: receiver_bank_location
+      type: update_column_financial_transfers_receiver_bank_location
+      description: Update the 'receiver_bank_location' column in the
+        'financial_transfers' collection.
+    - name: sender_account
+      type: update_column_financial_transfers_sender_account
+      description: Update the 'sender_account' column in the 'financial_transfers'
+        collection.
+    - name: sender_bank_location
+      type: update_column_financial_transfers_sender_bank_location
+      description: Update the 'sender_bank_location' column in the
+        'financial_transfers' collection.
+    - name: time
+      type: update_column_financial_transfers_time
+      description: Update the 'time' column in the 'financial_transfers' collection.
+    - name: transaction_id
+      type: update_column_financial_transfers_transaction_id
+      description: Update the 'transaction_id' column in the 'financial_transfers'
+        collection.
+  graphql:
+    typeName: update_financial_transfers_by_transaction_id_update_columns
+    inputTypeName: update_financial_transfers_by_transaction_id_update_columns_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_financial_transfers_by_transaction_id_update_columns
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_financial_transfers_by_transaction_id_update_columns
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - amount
+          - date
+          - is_laundering
+          - laundering_type
+          - payment_currency
+          - payment_type
+          - received_currency
+          - receiver_account
+          - receiver_bank_location
+          - sender_account
+          - sender_bank_location
+          - time
+          - transaction_id
+
+---
+kind: ObjectType
+version: v1
+definition:
+  name: update_financial_transfers_by_transaction_id_response
+  description: Responses from the 'update_financial_transfers_by_transaction_id' procedure
+  fields:
+    - name: affected_rows
+      type: int_32!
+      description: The number of rows affected by the mutation
+    - name: returning
+      type: "[financial_transfers!]!"
+      description: Data from rows affected by the mutation
+  graphql:
+    typeName: update_financial_transfers_by_transaction_id_response
+    inputTypeName: update_financial_transfers_by_transaction_id_response_input
+  dataConnectorTypeMapping:
+    - dataConnectorName: my_postgres
+      dataConnectorObjectType: update_financial_transfers_by_transaction_id_response
+
+---
+kind: TypePermissions
+version: v1
+definition:
+  typeName: update_financial_transfers_by_transaction_id_response
+  permissions:
+    - role: admin
+      output:
+        allowedFields:
+          - affected_rows
+          - returning
+
+---
+kind: Command
+version: v1
+definition:
+  name: update_financial_transfers_by_transaction_id
+  outputType: update_financial_transfers_by_transaction_id_response!
+  arguments:
+    - name: key_transaction_id
+      type: int_32!
+    - name: post_check
+      type: financial_transfers_bool_exp
+      description: Update permission post-condition predicate over the
+        'financial_transfers' collection
+    - name: pre_check
+      type: financial_transfers_bool_exp
+      description: Update permission pre-condition predicate over the
+        'financial_transfers' collection
+    - name: update_columns
+      type: update_financial_transfers_by_transaction_id_update_columns!
+  source:
+    dataConnectorName: my_postgres
+    dataConnectorCommand:
+      procedure: update_financial_transfers_by_transaction_id
+  graphql:
+    rootFieldName: update_financial_transfers_by_transaction_id
+    rootFieldKind: Mutation
+  description: Update any row on the 'financial_transfers' collection using the
+    'transaction_id' key
+
+---
+kind: CommandPermissions
+version: v1
+definition:
+  commandName: update_financial_transfers_by_transaction_id
+  permissions:
+    - role: admin
+      allowExecution: true
+
