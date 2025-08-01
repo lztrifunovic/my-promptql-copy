@@ -6,22 +6,31 @@ definition:
   fields:
     - name: account
       type: int_32!
+      description: Account ID
     - name: address
       type: string
+      description: Customer address
     - name: blacklisted
       type: boolean
+      description: Blacklisted boolean true or false
     - name: customer_id
       type: int_32!
+      description: Customer ID
     - name: dob
       type: date
+      description: Date of birth
     - name: name
       type: string!
+      description: Customer name
     - name: nationality
       type: string
+      description: Customer country of origin
     - name: pep_status
       type: boolean
+      description: PEP status
     - name: risk_level
       type: string
+      description: High, medium, or low in descending order.
   graphql:
     typeName: customers
     inputTypeName: customers_input

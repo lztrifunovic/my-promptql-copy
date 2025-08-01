@@ -6,30 +6,43 @@ definition:
   fields:
     - name: amount
       type: bigdecimal
+      description: Amount for the transfer
     - name: date
       type: date
+      description: Date of transfer
     - name: is_laundering
       type: boolean
+      description: True or false laundering tag
     - name: laundering_type
       type: string
+      description: Provides one of 5 types of laundering; layering, smurfing, integration, structing, round_dollar_structuring, or none.
     - name: payment_currency
       type: string
+      description: Denomination of currency used for the payment on the transfer.
     - name: payment_type
       type: string
+      description: Payment type which can be cash, crypto, wire, or check.
     - name: received_currency
       type: string
+      description: Denomination of currency received from the transfer.
     - name: receiver_account
       type: int_32
+      description: Receiver Account ID
     - name: receiver_bank_location
       type: string
+      description: Receiver bank country location.
     - name: sender_account
       type: int_32
+      description: Sender Account ID
     - name: sender_bank_location
       type: string
+      description: Sender bank country location.
     - name: time
       type: string
+      description: Time reported as a string in the format of military time. For example 21:50 reported as a string.
     - name: transaction_id
       type: int_32!
+      description: Transaction ID
   graphql:
     typeName: financial_transfers
     inputTypeName: financial_transfers_input

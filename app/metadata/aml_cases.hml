@@ -6,10 +6,13 @@ definition:
   fields:
     - name: cross_border
       type: boolean
+      description: cross border aml case flag, true or false.
     - name: darknet
       type: boolean
+      description: darknet aml case flag, true or false.
     - name: structuring
       type: boolean
+      description: structuring aml case flag, true or false.
   graphql:
     typeName: aml_cases_aml_flags
     inputTypeName: aml_cases_aml_flags_input
@@ -38,26 +41,37 @@ definition:
   fields:
     - name: id
       type: string!
+      description: Unique ID for AML case
     - name: aml_flags
       type: aml_cases_aml_flags
+      description: Aml case flag which is crossborder
     - name: amount
       type: float_64
+      description: Amount tied to the cost.
     - name: beneficiary_address
       type: String
+      description: Transaction address of the receiver.
     - name: beneficiary_id
       type: Int
+      description: ID of the receiver of the transaction.
     - name: beneficiary_name
       type: String
+      description: Name of the receiver.
     - name: originator_address
       type: String
+      description: ID of the the sender.
     - name: originator_id
       type: Int
+      description: ID of the sender.
     - name: originator_name
       type: String
+      description: Name of the sender.
     - name: transaction_date
       type: String
+      description: Date of the transaction as a string in UTC. An example is 2024-07-29T12:27:00.000Z
     - name: transaction_id
       type: Int
+      description: ID of the transaction.
   graphql:
     typeName: aml_cases
     inputTypeName: aml_cases_input

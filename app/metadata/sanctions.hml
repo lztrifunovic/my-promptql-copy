@@ -6,18 +6,25 @@ definition:
   fields:
     - name: id
       type: String!
+      description: Sanctions ID
     - name: address
       type: String
+      description: Address of the entity or individual. Example address, 919 Michael Meadow Suite 185, Port Robertfort, CT 57323
     - name: entity_name
       type: String
+      description: Name of the indiviudal or entity. The name can have multiple parts.
     - name: entity_type
       type: String
+      description: Entity type defined as individual or company. 
     - name: list_type
       type: String
+      description: The list type will let you know what regulatory body issues it, such as OFAC or the UN.
     - name: listed_date
       type: String
+      description: Date as a string in UTC format like so 2019-06-28T00:00:00.000Z
     - name: program
       type: String
+      description: Program resposible for the sanction such as UN-Santions or OFAC-SDN or EU-Restrictive.
   graphql:
     typeName: sanctions
     inputTypeName: sanctions_input

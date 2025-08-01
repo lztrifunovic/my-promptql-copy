@@ -6,6 +6,7 @@ definition:
   fields:
     - name: address
       type: String
+      description: Address for the contact
     - name: email
       type: String
     - name: phone_number
@@ -67,18 +68,25 @@ definition:
   fields:
     - name: id
       type: string!
+      description: Unique identifier
     - name: account_id
       type: Int
+      description: Account ID
     - name: contact_information
       type: accounts_contact_information
+      description: 
     - name: entity_type
       type: String
+      description: Entity type whether it is an individual or company.
     - name: name
       type: String
+      description: Name of the account holder.
     - name: risk
       type: String
+      description: Risk level at low, medium, or high
     - name: transaction_limits
       type: accounts_transaction_limits
+      description: It will provider a max_num_transacations, as well as max_transaction_limit amount.
   graphql:
     typeName: accounts
     inputTypeName: accounts_input

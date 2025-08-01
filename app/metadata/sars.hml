@@ -31,7 +31,7 @@ definition:
         Exact date and time when the SAR was filed with regulatory authorities.
         Critical for compliance timing analysis - SARs must be filed within 30 days.
         Used to calculate processing delays and measure investigation efficiency.
-        Format includes both date and time components for precise timing analysis.
+        Format is a timestamp type.
     - name: status
       type: string
       description: |
