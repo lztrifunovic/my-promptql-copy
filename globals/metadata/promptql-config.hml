@@ -21,6 +21,7 @@ definition:
     - customers (PostgreSQL): PEP status, blacklist status, jurisdiction, risk tiers
     - financialTransfers (PostgreSQL): Sender/receiver data, amounts, suspicious indicators, currencies
     - sars (PostgreSQL): Suspicious Activity Reports with narratives, tags, filing status, dates reported as timestamps
+    - For sars convert timestamps to days by extracting epoch and dividing by 86400 (seconds in a day)
     
     AML TERMINOLOGY:
     - PEP: Politically Exposed Person (high-risk individuals)
